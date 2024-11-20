@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccpfd11pbmyn1"]
+
+[ext_resource type="Script" path="res://cow.gd" id="1_o284o"]
+[ext_resource type="Texture2D" uid="uid://d1bxfxuo22rby" path="res://img/cow.png" id="1_tpjru"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o00fg"]
+radius = 35.0
+height = 82.0
+
+[node name="Cow" type="RigidBody2D"]
+position = Vector2(404, 215)
+angular_velocity = 6.28319
+script = ExtResource("1_o284o")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_o00fg")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(6, -2)
+scale = Vector2(0.054, 0.054)
+texture = ExtResource("1_tpjru")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwhpieumn17h3"]
+
+[ext_resource type="Script" path="res://scripts/water.gd" id="1_vu6wp"]
+[ext_resource type="AudioStream" uid="uid://dwytl3ffqeb87" path="res://sounds/splash.mp3" id="2_7n7ln"]
+[ext_resource type="Script" path="res://scripts/splash.gd" id="3_0dn16"]
+
+[sub_resource type="Gradient" id="Gradient_wfrlu"]
+colors = PackedColorArray(0, 0, 1, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ikcf7"]
+gradient = SubResource("Gradient_wfrlu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r5ars"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -400.0
+linear_accel_max = -200.0
+tangential_accel_min = 100.0
+tangential_accel_max = 300.0
+scale_min = 3.0
+scale_max = 10.0
+color_ramp = SubResource("GradientTexture1D_ikcf7")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+
+[node name="water" type="Area2D"]
+monitorable = false
+script = ExtResource("1_vu6wp")
+
+[node name="splash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_7n7ln")
+
+[node name="particles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_r5ars")
+lifetime = 0.5
+script = ExtResource("3_0dn16")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

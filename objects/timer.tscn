@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://kdifs0jisa1f"]
+
+[ext_resource type="Script" path="res://scripts/timer.gd" id="1_b3hkb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fpeoa"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+outline_size = 9
+shadow_size = 18
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
+[node name="timer" type="Label"]
+offset_left = 23.0
+offset_top = 17.0
+offset_right = 255.0
+offset_bottom = 84.0
+text = "Time: "
+label_settings = SubResource("LabelSettings_fpeoa")
+script = ExtResource("1_b3hkb")

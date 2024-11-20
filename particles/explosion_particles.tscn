@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://wkkacwm6q3ct"]
+
+[ext_resource type="Material" uid="uid://eelvrq5x6m8j" path="res://particles/explosion.tres" id="1_kywvi"]
+[ext_resource type="Script" path="res://particles/explosion_particles.gd" id="2_r8s60"]
+[ext_resource type="AudioStream" uid="uid://cq2ykff4ovwkf" path="res://sounds/vine-boom.ogg" id="3_ourpj"]
+
+[node name="ExplosionParticles" type="GPUParticles2D"]
+amount = 1000
+process_material = ExtResource("1_kywvi")
+lifetime = 5.0
+explosiveness = 0.96
+script = ExtResource("2_r8s60")
+
+[node name="boom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ourpj")
+autoplay = true
+
+[connection signal="finished" from="." to="." method="_on_finished"]

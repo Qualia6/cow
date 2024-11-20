@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://fdn1xefv7i14"]
+
+[ext_resource type="Script" path="res://scripts/goal_zone.gd" id="1_lorhl"]
+[ext_resource type="AudioStream" uid="uid://234n5i6kco18" path="res://sounds/yippee.ogg" id="2_mcdyw"]
+[ext_resource type="AudioStream" uid="uid://cilv7bhsghqvk" path="res://sounds/tada_fried.ogg" id="3_rj8rv"]
+
+[node name="goal zone" type="Area2D"]
+monitorable = false
+script = ExtResource("1_lorhl")
+
+[node name="yippee" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_mcdyw")
+
+[node name="tada" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rj8rv")
+volume_db = -10.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

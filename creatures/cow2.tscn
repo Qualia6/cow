@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://boqh5axuoyneg"]
+
+[ext_resource type="Script" path="res://scripts/cow.gd" id="1_wj50d"]
+[ext_resource type="Texture2D" uid="uid://d1bxfxuo22rby" path="res://img/cow.png" id="2_d3416"]
+[ext_resource type="AudioStream" uid="uid://cgot4hbosrdti" path="res://sounds/Cow_hurt2.ogg" id="3_100fy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvi6q"]
+radius = 9.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xu85k"]
+radius = 7.0
+height = 44.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_keqru"]
+radius = 4.98526
+height = 50.313
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8syjs"]
+radius = 14.1415
+height = 54.5837
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kl2bd"]
+playback_mode = 1
+random_pitch = 1.1
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("3_100fy")
+
+[node name="Cow" type="RigidBody2D"]
+input_pickable = true
+mass = 50.0
+center_of_mass_mode = 1
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_wj50d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20.6906, -14.573)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_jvi6q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(7.6906, 13.427)
+shape = SubResource("CapsuleShape2D_xu85k")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-23.3094, 7.42698)
+rotation = -0.0767945
+shape = SubResource("CapsuleShape2D_keqru")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-4.3094, -0.57302)
+rotation = -1.43815
+shape = SubResource("CapsuleShape2D_8syjs")
+
+[node name="moo" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(3.6906, 3.42698)
+stream = SubResource("AudioStreamRandomizer_kl2bd")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(0.691, 5.427)
+scale = Vector2(0.172, 0.172)
+texture = ExtResource("2_d3416")
+hframes = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

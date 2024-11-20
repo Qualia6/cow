@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://c241ow0oxl3kl"]
+
+[ext_resource type="Script" path="res://scripts/level_head.gd" id="1_o7hdc"]
+[ext_resource type="PackedScene" uid="uid://cwhpieumn17h3" path="res://objects/water.tscn" id="2_x4354"]
+[ext_resource type="PackedScene" uid="uid://dfv5tk0tpc8f1" path="res://creatures/lit_tnt.tscn" id="3_gsvub"]
+[ext_resource type="TileSet" uid="uid://gx14uw5k0tf6" path="res://tile_set.tres" id="4_fuwen"]
+[ext_resource type="Script" path="res://scripts/start_manager.gd" id="5_rstv2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bm3q"]
+size = Vector2(179, 48)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3fr6w"]
+font_size = 101
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_o7hdc")
+
+[node name="water" parent="." instance=ExtResource("2_x4354")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water"]
+position = Vector2(586, 252)
+shape = SubResource("RectangleShape2D_5bm3q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="water"]
+position = Vector2(583, 351)
+shape = SubResource("RectangleShape2D_5bm3q")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="water"]
+position = Vector2(632, 304)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_5bm3q")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="water"]
+position = Vector2(533, 304)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_5bm3q")
+
+[node name="tnt" parent="." instance=ExtResource("3_gsvub")]
+position = Vector2(583, 301)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("4_fuwen")
+
+[node name="Start Manager" type="Node2D" parent="."]
+script = ExtResource("5_rstv2")
+
+[node name="Button" type="Button" parent="Start Manager"]
+offset_left = 321.0
+offset_top = 408.0
+offset_right = 872.0
+offset_bottom = 497.0
+text = "Click to Begin!"
+
+[node name="loading" type="Label" parent="Start Manager"]
+offset_left = 355.0
+offset_top = 65.0
+offset_right = 813.0
+offset_bottom = 203.0
+text = "LOADING"
+label_settings = SubResource("LabelSettings_3fr6w")
+
+[connection signal="create_explosion" from="tnt" to="." method="create_explosion"]
+[connection signal="pressed" from="Start Manager/Button" to="Start Manager" method="_on_button_pressed"]

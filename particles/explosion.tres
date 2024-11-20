@@ -1,0 +1,32 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://eelvrq5x6m8j"]
+
+[sub_resource type="Gradient" id="Gradient_osqfi"]
+colors = PackedColorArray(0.933857, 0.870367, 0.74682, 1, 0.540604, 0.205318, 0.282194, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mffgb"]
+gradient = SubResource("Gradient_osqfi")
+
+[resource]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+spread = 180.0
+initial_velocity_min = 600.0
+initial_velocity_max = 800.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 100.0
+linear_accel_max = 150.0
+scale_min = 2.0
+scale_max = 10.0
+color_ramp = SubResource("GradientTexture1D_mffgb")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+turbulence_enabled = true
+turbulence_noise_scale = 9.3
+turbulence_noise_speed_random = 0.1
+turbulence_influence_min = 0.14
+turbulence_influence_max = 0.18

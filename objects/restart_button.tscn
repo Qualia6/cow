@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs4atalro5s2e"]
+
+[ext_resource type="Script" path="res://scripts/restart_button.gd" id="1_ggdkm"]
+
+[node name="restart button" type="Button"]
+offset_left = -45.0
+offset_top = -15.0
+offset_right = 45.0
+offset_bottom = 16.0
+text = "RESTART"
+script = ExtResource("1_ggdkm")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

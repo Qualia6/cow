@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxf1u4shycxwo"]
+
+[ext_resource type="Script" path="res://scripts/win.gd" id="1_ig8vd"]
+[ext_resource type="AudioStream" uid="uid://234n5i6kco18" path="res://sounds/yippee.ogg" id="1_l08nn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uk7im"]
+font_size = 56
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_k4c5b"]
+fade_time = 1.0
+stream_count = 1
+stream_0 = ExtResource("1_l08nn")
+
+[node name="win" type="Node2D"]
+script = ExtResource("1_ig8vd")
+
+[node name="congrats" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 2.0
+offset_right = 1148.0
+offset_bottom = 639.0
+text = "omg you won!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+yippee you are so amazing!
+i love you so much <3
+you are the perfect person
+i hope you have a wonderful day!
+And a wonderful life!!!!!
+I feel so blessed to live in a world with you
+yaaaaaaaaaaaaaayyyyyyyyyyyyyy :3"
+label_settings = SubResource("LabelSettings_uk7im")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPlaylist_k4c5b")
+autoplay = true
+
+[node name="times" type="Label" parent="."]
+offset_left = 729.0
+offset_top = 109.0
+offset_right = 904.0
+offset_bottom = 288.0
+text = "Your times were:
+-
+-
+-
+-
+-
+-"
+horizontal_alignment = 2
+
+[node name="restarts" type="Label" parent="."]
+offset_left = 920.0
+offset_top = 83.0
+offset_right = 1208.0
+offset_bottom = 266.0
+text = "Number of restarts
+for each level:
+-
+-
+-
+-
+-
+-"

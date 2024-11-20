@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://bs7j0euccsd1b"]
+
+[ext_resource type="Script" path="res://persistant/persistant.gd" id="1_nb6o0"]
+[ext_resource type="Script" path="res://persistant/level_holder.gd" id="2_1b74j"]
+[ext_resource type="Script" path="res://persistant/music.gd" id="3_0jfgm"]
+[ext_resource type="Script" path="res://persistant/basic_infos.gd" id="4_ie4dk"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_3w013"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_2q8m2"]
+stream_count = 1
+stream_0 = SubResource("AudioStreamSynchronized_3w013")
+
+[sub_resource type="LabelSettings" id="LabelSettings_82xgt"]
+font_size = 10
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Persistant" type="Node"]
+script = ExtResource("1_nb6o0")
+
+[node name="Level Holder" type="Node" parent="."]
+script = ExtResource("2_1b74j")
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPlaylist_2q8m2")
+script = ExtResource("3_0jfgm")
+
+[node name="watermark" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 633.0
+offset_right = 69.0
+offset_bottom = 656.0
+text = "cow by Qualia"
+label_settings = SubResource("LabelSettings_82xgt")
+script = ExtResource("4_ie4dk")
+version_number = "6"
+
+[connection signal="play_music" from="Level Holder" to="music" method="switch"]
+[connection signal="update_basic_infos" from="Level Holder" to="watermark" method="update_basic_infos"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfv5tk0tpc8f1"]
+
+[ext_resource type="Script" path="res://scripts/lit_tnt.gd" id="1_mfsu5"]
+[ext_resource type="Texture2D" uid="uid://dyv4r1h4hws5r" path="res://img/tile.png" id="2_23ie4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_47aab"]
+friction = 0.0
+bounce = 8.7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5t62"]
+size = Vector2(22, 22)
+
+[node name="tnt" type="RigidBody2D"]
+z_index = 1
+mass = 8.0
+physics_material_override = SubResource("PhysicsMaterial_47aab")
+continuous_cd = 1
+script = ExtResource("1_mfsu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_f5t62")
+
+[node name="tnt" type="Sprite2D" parent="."]
+position = Vector2(-12, -10)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_23ie4")
+centered = false
+region_enabled = true
+region_rect = Rect2(48.0203, -0.0263252, 15.9166, 15.835)
